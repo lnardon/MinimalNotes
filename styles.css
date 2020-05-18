@@ -1,0 +1,89 @@
+:root {
+  --main-color: rgba(51,51,51,1);
+  --main-toolbar-color: #FFF
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.menu {
+  position: absolute;
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  margin: 0rem 1rem;
+}
+
+.menu > img  {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.navContainer {
+  display: none;
+  position: absolute;
+  width: 10%;
+  min-width: 200px;
+  height: 100vh;
+  background-color: var(--main-color);
+  border-right: 2px solid blue;
+  z-index: 1;
+}
+
+#editor {
+  display: flex;
+  margin: 10px 15%;
+  background-color: var(--main-color);
+  border: none;
+  width: 100%;
+  height: 100%;
+  color: aliceblue;
+  font-size: 1rem;
+}
+
+.ql-toolbar {
+  border: none !important;
+  transform: scale(1.5);
+  color: white !important;
+  z-index: 3;
+}
+
+.ql-fill{
+  fill: var(--main-toolbar-color) !important;
+}
+
+.ql-stroke {
+  stroke: var(--main-toolbar-color) !important;
+}
+
+.ql-editor {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  margin: 0px 20%;
+}
+
+.ql-picker-label {
+  color: var(--main-toolbar-color) !important;
+}
+
+.editorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--main-color);
+}
