@@ -26,11 +26,16 @@ function toggleNavbar () {
   n = !n;
   if (n) {
     document.getElementById("navbar").style.display = 'none';
-    document.getElementById('editor').style.setProperty('--main-color', '#F7F7F7')
   } else {
+
     document.getElementById("navbar").style.display = 'flex';
   }
 }
 
-// const mainColor = getComputedStyle(document.getElementById('editor')).getPropertyValue('--main-color')
+
+// black and white
+function blackAndWhitTheme() {
+  document.getElementById('editor').style.setProperty('--main-color', '#F7F7F7')
+  document.getElementById('editorContainer').style.setProperty('--main-color', '#F7F7F7')
+}
 
