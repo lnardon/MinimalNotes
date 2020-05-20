@@ -35,13 +35,65 @@ body {
 
 .navContainer {
   display: none;
+  flex-direction: column;
+  align-items: center;
   position: absolute;
   width: 10%;
   min-width: 200px;
   height: 100vh;
   background-color: var(--main-color);
-  border-right: 2px solid blue;
+  border-right: 1px solid var(--main-toolbar-color);
   z-index: 1;
+}
+
+.logBtnDiv {
+  margin-top: 15px;
+}
+
+.logBtnDiv > button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: var(--main-text-color);
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 5px 15px;
+}
+
+.logBtnDiv > button:hover {
+border-bottom: 1px solid var(--main-text-color);
+cursor: pointer;
+}
+
+#logDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 60px;
+  margin-top: 100px;
+}
+
+#logDiv > input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  color: var(--main-text-color);
+  font-size: 1rem;
+  border-bottom: 1px solid var(--main-toolbar-color);
+}
+
+#signUpDiv {
+  display: none;
+}
+
+#signInDiv {
+  display: none;
+}
+
+.notes {
+  display: none;
 }
 
 #editor {

@@ -12,3 +12,4 @@ We live in the era of information, and too much information can be more harmful 
   - Theme Switcher
   - 2 Extra Themes ( Simple White & Dracula )
   - Databse Integration ( Firebase )
+  - Login & Signup Integration
