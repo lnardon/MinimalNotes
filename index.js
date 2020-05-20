@@ -118,9 +118,9 @@ firebase.auth().onAuthStateChanged((user) => {
     userId = firebase.auth().currentUser.uid;
     document.getElementById('logDiv').style.display = 'none';
     getNotes()
+    document.getElementById("notesDiv").style.display = 'flex';
   } else {
     document.getElementById('logDiv').style.display = 'flex';
     document.getElementById("navbar").style.display = 'flex';
-    document.getElementById("notesDiv").style.display = 'flex';
   }
 });

@@ -24,6 +24,7 @@ body {
   width: 3rem;
   height: 3rem;
   margin: 1rem 1rem;
+  cursor: pointer;
 }
 
 .menu > img  {
@@ -37,7 +38,6 @@ body {
   display: none;
   flex-direction: column;
   align-items: center;
-  position: absolute;
   width: 10%;
   min-width: 200px;
   height: 100vh;
@@ -94,6 +94,19 @@ cursor: pointer;
 
 .notes {
   display: none;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin-top: 250px;
+}
+
+.notes > select {
+  width: 90%;
+  color: var(--main-text-color);
+  background-color: var(--main-color);
+  outline: none;
+  border: none;
+  border-bottom: 1px solid var(--main-toolbar-color);
 }
 
 #editor {

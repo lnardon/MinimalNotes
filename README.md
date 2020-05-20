@@ -6,10 +6,22 @@ We live in the era of information, and too much information can be more harmful 
 
 ## Access the website [here](https://lnardon.github.io/MinimalNotes "MinimalNotes Homepage")
 
-### Please keep in mind that the website is still under development
+## Please keep in mind that the website is still under development
 
-#### Month Releases (May)
+#### Month Releases (May) -> Branch 1.0
   - Theme Switcher
   - 2 Extra Themes ( Simple White & Dracula )
   - Databse Integration ( Firebase )
   - Login & Signup Integration
+
+#### Month Releases (June) -> Branch 2.0
+  - 3 Extra Themes ( USA, Razzzr & Coffee Buzz )
+  - Ability to create notebooks
+  - Ability to move notes between notebooks
+  - Implement CSS transition animations
+
+  #### Month Releases (July) -> Branch 3.0
+  - Desktop program avaiable (Win 10 & Mac OS)
+  - Users can create their own themes
+  - Ability to export a document generated on the app in .txt format
+  - Users can customize their toolbar
