@@ -3,6 +3,7 @@
   --main-text-color: rgb(255, 255, 255);
   --main-toolbar-color: #FFF;
   --main-toolbar-color-contrast: rgb(41, 41, 41);
+  --main-logo-color: #FFF;
 }
 
 * {

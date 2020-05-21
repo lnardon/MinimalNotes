@@ -19,6 +19,7 @@ We live in the era of information, and too much information can be more harmful 
   - Ability to create notebooks
   - Ability to move notes between notebooks
   - Implement CSS transition animations
+  - Finalize Mobile experience
 
   #### Month Releases (July) -> Branch 3.0
   - Desktop program avaiable (Win 10 & Mac OS)

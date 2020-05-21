@@ -12,7 +12,7 @@
 </head>
 <body>
   <div class="menu" onclick="toggleNavbar()">
-    <img src="./minimalnoteslogo.svg" alt="Menu">
+    <img id="logo" src="./minimalnoteslogo.svg" alt="Menu"></img>
   </div>
   <nav id="navbar" class="navContainer">
     <div id="logDiv">
@@ -28,6 +28,7 @@
       <select name="Notepad"> 
         <option value="Inbox"> Inbox </option>
       </select>
+      <button onclick="whiteTheme()">White</button>
     </div>
   </nav>
   <div id="editorContainer" class="editorContainer">

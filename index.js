@@ -2,6 +2,7 @@ var userId = '';
 var n = true;
 var userNotes = [];
 var currentNoteId = 1589945524057;
+var root = document.documentElement;
 
 var toolbarOptions = [
   ['bold', 'italic', 'underline', 'strike'],        
@@ -40,6 +41,15 @@ function toggleNavbar () {
 function blackAndWhitTheme() {
   document.getElementById('editor').style.setProperty('--main-color', '#F7F7F7')
   document.getElementById('editorContainer').style.setProperty('--main-color', '#F7F7F7')
+}
+
+// black and white
+function whiteTheme() {
+  root.style.setProperty('--main-color', '#F7F7F7')
+  root.style.setProperty('--main-text-color', '#000')
+  root.style.setProperty('--main-toolbar-color', '#000')
+  root.style.setProperty('--main-toolbar-color-contrast', '#FFF')
+  document.getElementById('logo').style.filter = 'invert(100%) sepia(99%) saturate(2%) hue-rotate(310deg) brightness(109%) contrast(101%)';
 }
 
 var firebaseConfig = {
