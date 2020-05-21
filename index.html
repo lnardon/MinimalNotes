@@ -25,14 +25,16 @@
     </div>
 
     <div id="notesDiv" class="notes">
-      <select name="Notepad"> 
-        <option value="Inbox"> Inbox </option>
+      <select id="themeSwitcher" name="Notepad" onchange="themeSwitcher()"> 
+        <option value="Original" selected> Original </option>
+        <option value="Simple White"> Simple White </option>
+        <option value="Dracula"> Dracula </option>
       </select>
       <button onclick="whiteTheme()">White</button>
     </div>
   </nav>
   <div id="editorContainer" class="editorContainer">
-    <div id="editor" data-theme-value="--main-color">
+    <div id="editor">
       <h1 class="ql-size-large"> WELCOME TO MINIMAL NOTES </h1>
     </div>
   </div>

@@ -36,22 +36,6 @@ function toggleNavbar () {
   }
 }
 
-
-// black and white
-function blackAndWhitTheme() {
-  document.getElementById('editor').style.setProperty('--main-color', '#F7F7F7')
-  document.getElementById('editorContainer').style.setProperty('--main-color', '#F7F7F7')
-}
-
-// black and white
-function whiteTheme() {
-  root.style.setProperty('--main-color', '#F7F7F7')
-  root.style.setProperty('--main-text-color', '#000')
-  root.style.setProperty('--main-toolbar-color', '#000')
-  root.style.setProperty('--main-toolbar-color-contrast', '#FFF')
-  document.getElementById('logo').style.filter = 'invert(100%) sepia(99%) saturate(2%) hue-rotate(310deg) brightness(109%) contrast(101%)';
-}
-
 var firebaseConfig = {
   apiKey: "AIzaSyAFp5zbuqwNVUGJWnuZDL_jCkmcdcvsUyI",
   authDomain: "minimalnotes-59a04.firebaseapp.com",
@@ -121,6 +105,56 @@ function getNotes() {
       openNote(userNotes[note].rawData)
     }
   })
+}
+
+
+
+
+
+
+
+
+// THEME SELECTION
+function originalTheme() {
+  root.style.setProperty('--main-color', '#333')
+  root.style.setProperty('--main-text-color', '#FFF')
+  root.style.setProperty('--main-toolbar-color', '#FFF')
+  root.style.setProperty('--main-toolbar-color-contrast', '#FFF')
+  document.getElementById('logo').style.filter = 'invert(0%) sepia(99%) saturate(2%) hue-rotate(310deg) brightness(109%) contrast(101%)';
+}
+
+function simpleWhiteTheme() {
+  root.style.setProperty('--main-color', '#F7F7F7')
+  root.style.setProperty('--main-text-color', '#000')
+  root.style.setProperty('--main-toolbar-color', '#000')
+  root.style.setProperty('--main-toolbar-color-contrast', '#FFF')
+  document.getElementById('logo').style.filter = 'invert(100%) sepia(99%) saturate(2%) hue-rotate(310deg) brightness(109%) contrast(101%)';
+}
+
+function draculaTheme() {
+  root.style.setProperty('--main-color', '#282a36')
+  root.style.setProperty('--main-text-color', '#ffb86c')
+  root.style.setProperty('--main-toolbar-color', '#ff79c6')
+  root.style.setProperty('--main-toolbar-color-contrast', '#FFF')
+  document.getElementById('logo').style.filter = 'invert(100%) sepia(99%) saturate(2%) hue-rotate(310deg) brightness(109%) contrast(101%)';
+}
+
+function themeSwitcher() {
+  var theme = document.getElementById('themeSwitcher').value 
+  switch(theme){  
+    case "Original":
+      originalTheme()
+      break
+    case "Simple White":
+      simpleWhiteTheme()
+      break
+    case "Dracula":
+      draculaTheme()
+      break
+    default:
+      originalTheme()
+      break
+  }
 }
 
 firebase.auth().onAuthStateChanged((user) => {
