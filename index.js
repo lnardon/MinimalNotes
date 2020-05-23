@@ -141,19 +141,19 @@ function originalTheme() {
 }
 
 function simpleWhiteTheme() {
-  root.style.setProperty('--main-color', '#F7F7F7')
-  root.style.setProperty('--main-text-color', '#000')
-  root.style.setProperty('--main-toolbar-color', '#000')
-  root.style.setProperty('--main-toolbar-color-contrast', '#FFF')
+  root.style.setProperty('--main-color', '#F2F2F2')
+  root.style.setProperty('--main-text-color', '#0D0D0D')
+  root.style.setProperty('--main-toolbar-color', '#0D0D0D')
+  root.style.setProperty('--main-toolbar-color-contrast', '#F2F2F2')
   document.getElementById('logo').style.filter = 'invert(100%) sepia(99%) saturate(2%) hue-rotate(310deg) brightness(109%) contrast(101%)';
 }
 
 function draculaTheme() {
   root.style.setProperty('--main-color', '#282a36')
   root.style.setProperty('--main-text-color', '#ffb86c')
-  root.style.setProperty('--main-toolbar-color', '#50fa7b')
+  root.style.setProperty('--main-toolbar-color', '#ff79c6')
   root.style.setProperty('--main-toolbar-color-contrast', '#FFF')
-  document.getElementById('logo').style.filter = 'invert(100%) sepia(99%) saturate(2%) hue-rotate(310deg) brightness(109%) contrast(101%)';
+  document.getElementById('logo').style.filter = 'brightness(0) saturate(100%) invert(69%) sepia(37%) saturate(2176%) hue-rotate(289deg) brightness(102%) contrast(101%);';
 }
 
 function themeSwitcher() {
