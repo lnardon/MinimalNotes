@@ -1,8 +1,10 @@
 var userId = '';
 var n = true;
+var as = null;
 var userNotes = [];
-var currentNoteId = 1589945524057;
+var currentNoteId = 0;
 var root = document.documentElement;
+var select = document.getElementById("notesSwitcher");
 
 var toolbarOptions = [
   ['bold', 'italic', 'underline', 'strike'],        
@@ -67,42 +69,57 @@ function signIn() {
 }
 
 function createNewNote() {
-  var delta = null;
-  delta = quill.getContents();
-  firebase.database().ref( userId + '/notes/' + Date.now() ).set({
+  var delta = {};
+  currentNoteId = Date.now()
+  quill.setContents(delta)
+  firebase.database().ref( userId + '/notes/' + currentNoteId ).set({
     rawData: delta,
+    id: currentNoteId
   });
+  var el = document.createElement("option");
+  var opt = "New Note";
+  el.textContent = opt;
+  el.value = opt;
+  el.selected = true
+  select.appendChild(el);
 }
 
 function saveNote() {
-  var delta = null;
-  setInterval(() => {
-    delta = quill.getContents();
-    firebase.database().ref( userId + '/notes/' + currentNoteId ).update({
-      rawData: delta,
-    });
-  },15000)
-}
-
-function openNote(note) {
-  quill.setContents(note)
-  currentNoteId = note.id
-}
-
-function liveNotesUpdate() {
-  firebase.database().ref(userId + 'notes/' + currentNoteId).on('value', (snapshot) => {
-    console.log(snapshot.val());
+  var delta = {};
+  delta = quill.getContents();
+  firebase.database().ref( userId + '/notes/' + currentNoteId ).set({
+    rawData: delta,
+    id: currentNoteId
   });
+  for (var i = 0; i <2; i++){
+    if(userNotes[i].id == currentNoteId ){
+      userNotes[i].rawData = delta
+    }
+  }
+}
+
+function openNote() {
+  var aux = select.value
+  userNotes.forEach((note) => {
+    if (note.rawData.ops[0].insert == aux){
+      quill.setContents(note.rawData)
+      currentNoteId = note.id
+    }
+  })
 }
 
 function getNotes() {
-  firebase.database().ref(userId + '/notes').on('value', (snap) => {
-    let aux = snap.val()
+  select.innerHTML = null
+  firebase.database().ref(userId + '/notes').once('value', (snap) => {
+    var aux = snap.val()
+    userNotes = []
     for (note in aux){
       userNotes.push(aux[note])
-    }
-    for( note in userNotes){
-      openNote(userNotes[note].rawData)
+      var el = document.createElement("option");
+      var opt = aux[note].rawData.ops[0].insert;
+      el.textContent = opt;
+      el.value = opt;
+      select.appendChild(el);
     }
   })
 }
@@ -134,7 +151,7 @@ function simpleWhiteTheme() {
 function draculaTheme() {
   root.style.setProperty('--main-color', '#282a36')
   root.style.setProperty('--main-text-color', '#ffb86c')
-  root.style.setProperty('--main-toolbar-color', '#ff79c6')
+  root.style.setProperty('--main-toolbar-color', '#50fa7b')
   root.style.setProperty('--main-toolbar-color-contrast', '#FFF')
   document.getElementById('logo').style.filter = 'invert(100%) sepia(99%) saturate(2%) hue-rotate(310deg) brightness(109%) contrast(101%)';
 }

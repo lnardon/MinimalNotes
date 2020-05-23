@@ -38,6 +38,7 @@ body {
 
 .navContainer {
   display: none;
+  position: absolute;
   flex-direction: column;
   align-items: center;
   width: 10%;

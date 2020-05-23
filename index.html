@@ -30,7 +30,11 @@
         <option value="Simple White"> Simple White </option>
         <option value="Dracula"> Dracula </option>
       </select>
-      <button onclick="whiteTheme()">White</button>
+      <select id="notesSwitcher" name="Notepad" onchange="openNote()"> 
+        <option value="null">-</option>
+      </select>
+      <button onclick="createNewNote()">Create Note</button>
+      <button onclick="saveNote()">Save Note</button>
     </div>
   </nav>
   <div id="editorContainer" class="editorContainer">
