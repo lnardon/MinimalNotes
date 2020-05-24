@@ -25,16 +25,20 @@
     </div>
 
     <div id="notesDiv" class="notes">
+      <h3>Theme Switcher</h3>
       <select id="themeSwitcher" name="Notepad" onchange="themeSwitcher()"> 
         <option value="Original" selected> Original </option>
         <option value="Simple White"> Simple White </option>
         <option value="Dracula"> Dracula </option>
       </select>
+      <h3>Note Selector</h3>
       <select id="notesSwitcher" name="Notepad" onchange="openNote()"> 
         <option value="null">-</option>
       </select>
-      <button onclick="createNewNote()">Create Note</button>
-      <button onclick="saveNote()">Save Note</button>
+      <div class="handleNotesBtn">
+        <button onclick="createNewNote()">Create Note</button>
+        <button onclick="saveNote()">Save Note</button>
+      </div>
     </div>
   </nav>
   <div id="editorContainer" class="editorContainer">

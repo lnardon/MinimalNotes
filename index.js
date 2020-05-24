@@ -8,12 +8,8 @@ var select = document.getElementById("notesSwitcher");
 
 var toolbarOptions = [
   ['bold', 'italic', 'underline', 'strike'],        
-  ['blockquote', 'code-block'],
-  [{ 'header': 1 }, { 'header': 2 }],               
-  [{ 'list': 'ordered'}, { 'list': 'bullet' }],
-  [{ 'script': 'sub'}, { 'script': 'super' }],      
-  [{ 'indent': '-2'}, { 'indent': '+2' }],          
-  [{ 'direction': 'rtl' }],                         
+  ['blockquote', 'code-block'],              
+  [{ 'list': 'ordered'}, { 'list': 'bullet' }],                        
   [{ 'size': ['small', false, 'large', 'huge'] }],  
   [{ 'header': [1, 2, 3, 4, 5, 6, false] }],
   [{ 'color': [] }, { 'background': [] }],
@@ -24,7 +20,7 @@ var toolbarOptions = [
 var quill = new Quill('#editor', {
   theme: 'snow',
   modules: {
-    toolbar: toolbarOptions
+    toolbar:  toolbarOptions
   }
 });
 
