@@ -153,6 +153,15 @@ h3 {
   font-size: 1rem;
 }
 
+div:nth-child(4) > div > span{
+  background-color: var(--main-color) !important;
+}
+
+.ql-tootip {
+  background-color: red !important;
+  color: blue !important;
+}
+
 .ql-toolbar {
   border: none !important;
   transform: scale(1.5);

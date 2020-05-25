@@ -20,7 +20,10 @@ var toolbarOptions = [
 var quill = new Quill('#editor', {
   theme: 'snow',
   modules: {
-    toolbar:  toolbarOptions
+    toolbar:  toolbarOptions,
+    imageResize: {
+      displaySize: true
+    }
   }
 });
 
@@ -160,7 +163,7 @@ function draculaTheme() {
   root.style.setProperty('--main-text-color', '#ffb86c')
   root.style.setProperty('--main-toolbar-color', '#ff79c6')
   root.style.setProperty('--main-toolbar-color-contrast', '#FFF')
-  document.getElementById('logo').style.filter = 'brightness(0) saturate(100%) invert(69%) sepia(37%) saturate(2176%) hue-rotate(289deg) brightness(102%) contrast(101%);';
+  document.getElementById('logo').style.filter = 'invert(69%) sepia(37%) saturate(2176%) hue-rotate(289deg) brightness(102%) contrast(101%)';
 }
 
 function themeSwitcher() {
