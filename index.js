@@ -94,6 +94,17 @@ function saveNote() {
   }
 }
 
+function deleteNote() {
+  firebase.database().ref( userId + '/notes/' + currentNoteId ).remove();
+  for (var i = 0; i <userNotes.length; i++){
+    if(userNotes[i].id == currentNoteId ){
+      userNotes.splice(i,1)
+      select.remove(i)
+      quill.setContents(userNotes[i-1].rawData)
+    }
+  }
+}
+
 function openNote() {
   var aux = select.value
   userNotes.forEach((note) => {
