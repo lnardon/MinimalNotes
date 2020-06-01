@@ -13,6 +13,7 @@ We live in the era of information, and too much information can be more harmful 
   - [x] 2 Extra Themes ( Simple White & Dracula )
   - [x] Databse Integration ( Firebase )
   - [x] Login & Signup Integration
+  - [x] Ability to resize images
 
 #### Month Release (June) -> Branch 2.0
   - [] 3 Extra Themes ( USA, Razzzr & Coffee Buzz )
