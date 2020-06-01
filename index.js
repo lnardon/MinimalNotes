@@ -54,7 +54,7 @@ function signUp() {
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-    console.log(error)
+    console.log(error);
   });
   userId = firebase.auth().currentUser.uid;
 }
@@ -63,14 +63,14 @@ function signIn() {
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
   firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-    console.log(error)
+    console.log(error);
   });
 }
 
 function createNewNote() {
   var delta = {};
-  currentNoteId = Date.now()
-  quill.setContents(delta)
+  currentNoteId = Date.now();
+  quill.setContents(delta);
   firebase.database().ref( userId + '/notes/' + currentNoteId ).set({
     rawData: delta,
     id: currentNoteId
@@ -79,7 +79,7 @@ function createNewNote() {
   var opt = "New Note";
   el.textContent = opt;
   el.value = opt;
-  el.selected = true
+  el.selected = true;
   select.appendChild(el);
 }
 
@@ -90,11 +90,12 @@ function saveNote() {
     rawData: delta,
     id: currentNoteId
   });
-  for (var i = 0; i <2; i++){
+  for (var i = 0; i < userNotes.length; i++){
     if(userNotes[i].id == currentNoteId ){
-      userNotes[i].rawData = delta
+      userNotes[i].rawData = delta;
     }
   }
+  select.options[select.selectedIndex].textContent = delta.ops[0].insert;
 }
 
 function deleteNote() {
@@ -109,26 +110,26 @@ function deleteNote() {
 }
 
 function openNote() {
-  var aux = select.value
+  var aux = select.value;
   userNotes.forEach((note) => {
-    if (note.rawData.ops[0].insert == aux){
-      quill.setContents(note.rawData)
-      currentNoteId = note.id
+    if (note.id == aux){
+      quill.setContents(note.rawData);
+      currentNoteId = note.id;
     }
   })
 }
 
 function getNotes() {
-  select.innerHTML = null
+  select.innerHTML = null;
   firebase.database().ref(userId + '/notes').once('value', (snap) => {
-    var aux = snap.val()
-    userNotes = []
+    var aux = snap.val();
+    userNotes = [];
     for (note in aux){
       userNotes.push(aux[note])
       var el = document.createElement("option");
       var opt = aux[note].rawData.ops[0].insert;
       el.textContent = opt;
-      el.value = opt;
+      el.value = aux[note].id;
       select.appendChild(el);
     }
   })
