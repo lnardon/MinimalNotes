@@ -167,6 +167,30 @@ function draculaTheme() {
   document.getElementById('logo').style.filter = 'invert(69%) sepia(37%) saturate(2176%) hue-rotate(289deg) brightness(102%) contrast(101%)';
 }
 
+function usaTheme() {
+  root.style.setProperty('--main-color', '#F8F8F8')
+  root.style.setProperty('--main-text-color', '#3C3B6E')
+  root.style.setProperty('--main-toolbar-color', '#B22234')
+  root.style.setProperty('--main-toolbar-color-contrast', '#FFF')
+  document.getElementById('logo').style.filter = 'brightness(0) saturate(100%) invert(23%) sepia(9%) saturate(3324%) hue-rotate(202deg) brightness(93%) contrast(92%)';
+}
+
+function razzzrTheme() {
+  root.style.setProperty('--main-color', '#313131')
+  root.style.setProperty('--main-text-color', '#F5F5F5')
+  root.style.setProperty('--main-toolbar-color', '#00FF00')
+  root.style.setProperty('--main-toolbar-color-contrast', '#FFF')
+  document.getElementById('logo').style.filter = 'invert(64%) sepia(64%) saturate(4644%) hue-rotate(85deg) brightness(121%) contrast(125%)';
+}
+
+function coffeeBuzzTheme() {
+  root.style.setProperty('--main-color', '#fffbf5')
+  root.style.setProperty('--main-text-color', '#313131')
+  root.style.setProperty('--main-toolbar-color', '#2B0F0E')
+  root.style.setProperty('--main-toolbar-color-contrast', '#FFF')
+  document.getElementById('logo').style.filter = 'invert(6%) sepia(65%) saturate(1608%) hue-rotate(334deg) brightness(83%) contrast(96%)';
+}
+
 function themeSwitcher() {
   var theme = document.getElementById('themeSwitcher').value 
   switch(theme){  
@@ -178,6 +202,15 @@ function themeSwitcher() {
       break
     case "Dracula":
       draculaTheme()
+      break
+    case "USA":
+      usaTheme()
+      break
+    case "Razzzr":
+      razzzrTheme()
+      break
+    case "Coffee Buzz":
+      coffeeBuzzTheme()
       break
     default:
       originalTheme()
