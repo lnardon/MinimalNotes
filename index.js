@@ -69,6 +69,13 @@ function signIn() {
   });
 }
 
+function loadSavedTheme(){
+  firebase.database().ref(userId + '/currentTheme').once('value', (snap) => {
+    var aux = snap.val();
+    console.log(aux)
+  })
+}
+
 function createNewNote() {
   var delta = quill.getContents();
   currentNoteId = Date.now();
@@ -217,6 +224,9 @@ function themeSwitcher() {
       originalTheme()
       break
   }
+  firebase.database().ref( userId + '/currentTheme/').set({
+    name: theme
+  });
 }
 
 firebase.auth().onAuthStateChanged((user) => {
