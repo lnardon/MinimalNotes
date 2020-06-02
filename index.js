@@ -72,7 +72,31 @@ function signIn() {
 function loadSavedTheme(){
   firebase.database().ref(userId + '/currentTheme').once('value', (snap) => {
     var aux = snap.val();
-    console.log(aux)
+    var switcher = document.getElementById('themeSwitcher');
+    switch(aux.name){  
+      case "Original":
+        originalTheme()
+        break
+      case "Simple White":
+        simpleWhiteTheme()
+        break
+      case "Dracula":
+        draculaTheme();
+        break
+      case "USA":
+        usaTheme()
+        break
+      case "Razzzr":
+        razzzrTheme()
+        break
+      case "Coffee Buzz":
+        coffeeBuzzTheme()
+        break
+      default:
+        originalTheme()
+        break
+    }
+    switcher.value = aux.name;
   })
 }
 
@@ -110,9 +134,13 @@ function deleteNote() {
   firebase.database().ref( userId + '/notes/' + currentNoteId ).remove();
   for (var i = 0; i <userNotes.length; i++){
     if(userNotes[i].id == currentNoteId ){
-      userNotes.splice(i,1)
-      select.remove(i)
-      quill.setContents(userNotes[i-1].rawData)
+      if (i != 0){
+        quill.setContents(userNotes[0].rawData);
+      } else {
+        quill.setContents(userNotes[1].rawData);
+      }
+      userNotes.splice(i,1);
+      select.remove(i);
     }
   }
 }
@@ -127,9 +155,9 @@ function openNote() {
   })
 }
 
-function getNotes() {
+async function getNotes() {
   select.innerHTML = null;
-  firebase.database().ref(userId + '/notes').once('value', (snap) => {
+  await firebase.database().ref(userId + '/notes').once('value', (snap) => {
     var aux = snap.val();
     userNotes = [];
     for (note in aux){
@@ -141,6 +169,7 @@ function getNotes() {
       select.appendChild(el);
     }
   })
+  quill.setContents(userNotes[0].rawData);
 }
 
 
@@ -233,7 +262,8 @@ firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     userId = firebase.auth().currentUser.uid;
     document.getElementById('logDiv').style.display = 'none';
-    getNotes()
+    loadSavedTheme();
+    getNotes();
     document.getElementById("notesDiv").style.display = 'flex';
   } else {
     document.getElementById('logDiv').style.display = 'flex';
