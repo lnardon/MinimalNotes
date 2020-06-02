@@ -5,6 +5,7 @@ var userNotes = [];
 var currentNoteId = 0;
 var root = document.documentElement;
 var select = document.getElementById("notesSwitcher");
+var notebookSelect = document.getElementById("notebooksSwitcher");
 
 var toolbarOptions = [
   ['bold', 'italic', 'underline', 'strike'],        
@@ -32,7 +33,6 @@ function toggleNavbar () {
   if (n) {
     document.getElementById("navbar").style.display = 'none';
   } else {
-
     document.getElementById("navbar").style.display = 'flex';
   }
 }
@@ -113,6 +113,21 @@ function createNewNote() {
   el.value = opt;
   el.selected = true;
   select.appendChild(el);
+}
+
+function createNewNotebook() {
+  var notebookId = Date.now();
+  firebase.database().ref( userId + '/notebooks/' + notebookId ).set({
+    notes: [],
+    id: notebookId,
+    name : "New Notebook"
+  });
+  var el = document.createElement("option");
+  var opt = "New Note";
+  el.textContent = opt;
+  el.value = opt;
+  el.selected = true;
+  noteBookselect.appendChild(el);
 }
 
 function saveNote() {
