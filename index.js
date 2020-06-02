@@ -177,7 +177,7 @@ function usaTheme() {
 }
 
 function razzzrTheme() {
-  root.style.setProperty('--main-color', '#313131')
+  root.style.setProperty('--main-color', '#131313')
   root.style.setProperty('--main-text-color', '#F5F5F5')
   root.style.setProperty('--main-toolbar-color', '#00FF00')
   root.style.setProperty('--main-toolbar-color-contrast', '#FFF')
@@ -185,7 +185,7 @@ function razzzrTheme() {
 }
 
 function coffeeBuzzTheme() {
-  root.style.setProperty('--main-color', '#fffbf5')
+  root.style.setProperty('--main-color', '#fffbd5')
   root.style.setProperty('--main-text-color', '#313131')
   root.style.setProperty('--main-toolbar-color', '#2B0F0E')
   root.style.setProperty('--main-toolbar-color-contrast', '#FFF')
