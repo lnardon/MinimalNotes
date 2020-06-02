@@ -55,8 +55,10 @@ function signUp() {
   var password = document.getElementById('password').value;
   firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
     console.log(error);
+  }).then(() => {
+    userId = firebase.auth().currentUser.uid;
+    createNewNote();
   });
-  userId = firebase.auth().currentUser.uid;
 }
 
 function signIn() {
@@ -68,9 +70,8 @@ function signIn() {
 }
 
 function createNewNote() {
-  var delta = {};
+  var delta = quill.getContents();
   currentNoteId = Date.now();
-  quill.setContents(delta);
   firebase.database().ref( userId + '/notes/' + currentNoteId ).set({
     rawData: delta,
     id: currentNoteId

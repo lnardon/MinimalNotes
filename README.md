@@ -1,4 +1,4 @@
-# MinimalNotes Website
+# [MinimalNotes Website](https://lnardon.github.io/MinimalNotes "MinimalNotes Homepage")
 
 We live in the era of information, and too much information can be more harmful than no information. It's time to declutter your digital life and the MinimalNotes website is the perfect alternative for those who seek a simple and easy to use note taking application. 
 
@@ -16,7 +16,7 @@ We live in the era of information, and too much information can be more harmful 
   - [x] Ability to resize images
 
 #### Month Release (June) -> Branch 2.0
-  - [] 3 Extra Themes ( USA, Razzzr & Coffee Buzz )
+  - [x] 3 Extra Themes ( USA, Razzzr & Coffee Buzz )
   - [] Ability to create notebooks
   - [] Ability to move notes between notebooks
   - [] Implement CSS transition animations

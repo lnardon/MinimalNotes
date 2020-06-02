@@ -50,7 +50,7 @@ body {
 }
 
 .logBtnDiv {
-  margin-top: 15px;
+  margin-top: 50px;
 }
 
 .logBtnDiv > button {
@@ -75,7 +75,7 @@ cursor: pointer;
   justify-content: center;
   width: 80%;
   height: 60px;
-  margin-top: 100px;
+  margin-top: 150px;
 }
 
 h3 {
