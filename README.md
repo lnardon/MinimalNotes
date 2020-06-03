@@ -3,7 +3,9 @@
 We live in the era of information, and too much information can be more harmful than no information. It's time to declutter your digital life and the MinimalNotes website is the perfect alternative for those who seek a simple and easy to use note taking application. 
 
 ## 6 Great Themes Available
-![main](https://user-images.githubusercontent.com/43593024/83589472-2f5c2980-a52a-11ea-9274-6801159c594d.gif)
+<p align="center">
+  <img width="460" height="300" src="https://user-images.githubusercontent.com/43593024/83589472-2f5c2980-a52a-11ea-9274-6801159c594d.gif">
+</p>
 
 
 ## Access the website [here](https://lnardon.github.io/MinimalNotes "MinimalNotes Homepage")
