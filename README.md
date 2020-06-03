@@ -17,13 +17,12 @@ We live in the era of information, and too much information can be more harmful 
 
 #### Month Release (June) -> Branch 2.0
   - [x] 3 Extra Themes ( USA, Razzzr & Coffee Buzz )
-  - [] Ability to create notebooks
-  - [] Ability to move notes between notebooks
-  - [] Implement CSS transition animations
-  - [] Finalize Mobile experience
+  - [x] Ability to create notebooks
+  - [ ] Ability to move notes between notebooks
+  - [ ] Implement CSS transition animations
+  - [ ] Create Mobile experience
+  - [x] Ability to export a document generated on the app in .txt format
+  - [ ] Improve user Login and SignUp Experience
 
   #### Month Release (July) -> Branch 3.0
-  - [] Desktop program avaiable (Win 10 & Mac OS)
-  - [] Users can create their own themes
-  - [] Ability to export a document generated on the app in .txt format
-  - [] Users can group notes in a notebook
+  - [ ] Desktop program avaiable (Win 10 & Mac OS)

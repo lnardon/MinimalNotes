@@ -209,6 +209,7 @@ function openNote() {
       currentNoteId = userNotes[0].id;
     }
   })
+  toggleNavbar();
 }
 
 async function getNotes() {
@@ -226,6 +227,13 @@ async function getNotes() {
     }
     openNote();
   })
+}
+
+function downloadFile(){
+  var delta = document.getElementById('editor').innerText
+  var blob = new Blob([delta],
+      { type: "text/plain;charset=utf-8" });
+  saveAs(blob, select.options[select.selectedIndex].textContent + ".txt");
 }
 
 
