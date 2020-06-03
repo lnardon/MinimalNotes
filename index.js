@@ -320,6 +320,7 @@ function themeSwitcher() {
   firebase.database().ref( userId + '/currentTheme/').set({
     name: theme
   });
+  toggleNavbar();
 }
 
 firebase.auth().onAuthStateChanged((user) => {
