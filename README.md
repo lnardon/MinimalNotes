@@ -4,7 +4,7 @@ We live in the era of information, and too much information can be more harmful 
 
 ## 6 Great Themes Available
 <p align="center">
-  <img width="460" height="300" src="https://user-images.githubusercontent.com/43593024/83589472-2f5c2980-a52a-11ea-9274-6801159c594d.gif">
+  <img src="https://user-images.githubusercontent.com/43593024/83589472-2f5c2980-a52a-11ea-9274-6801159c594d.gif">
 </p>
 
 
