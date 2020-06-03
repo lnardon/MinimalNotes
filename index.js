@@ -3,6 +3,7 @@ var n = true;
 var as = null;
 var userNotes = [];
 var currentNoteId = 0;
+var currentNotebookId = 0;
 var root = document.documentElement;
 var select = document.getElementById("notesSwitcher");
 var notebookSelect = document.getElementById("notebooksSwitcher");
@@ -57,7 +58,7 @@ function signUp() {
     console.log(error);
   }).then(() => {
     userId = firebase.auth().currentUser.uid;
-    createNewNote();
+    createNewNotebook("Inbox");
   });
 }
 
@@ -73,37 +74,89 @@ function loadSavedTheme(){
   firebase.database().ref(userId + '/currentTheme').once('value', (snap) => {
     var aux = snap.val();
     var switcher = document.getElementById('themeSwitcher');
-    switch(aux.name){  
-      case "Original":
-        originalTheme()
-        break
-      case "Simple White":
-        simpleWhiteTheme()
-        break
-      case "Dracula":
-        draculaTheme();
-        break
-      case "USA":
-        usaTheme()
-        break
-      case "Razzzr":
-        razzzrTheme()
-        break
-      case "Coffee Buzz":
-        coffeeBuzzTheme()
-        break
-      default:
-        originalTheme()
-        break
+    if (aux){
+      switch(aux.name){  
+        case "Original":
+          originalTheme()
+          break
+        case "Simple White":
+          simpleWhiteTheme()
+          break
+        case "Dracula":
+          draculaTheme();
+          break
+        case "USA":
+          usaTheme()
+          break
+        case "Razzzr":
+          razzzrTheme()
+          break
+        case "Coffee Buzz":
+          coffeeBuzzTheme()
+          break
+        default:
+          originalTheme()
+          break
+      }
+      switcher.value = aux.name;
     }
-    switcher.value = aux.name;
   })
 }
 
+function createNewNotebook(name) {
+  var notebookId = Date.now();
+  currentNotebookId = notebookId;
+  firebase.database().ref( userId + '/notebooks/' + notebookId ).set({
+    notes: [],
+    id: notebookId,
+    name : name || "New Notebook"
+  });
+  var el = document.createElement("option");
+  var opt = "New Note";
+  el.textContent = opt;
+  el.value = opt;
+  el.selected = true;
+  notebookSelect.appendChild(el);
+  createNewNote();
+}
+
+function deleteNotebook() {
+  firebase.database().ref( userId + '/notebooks/' + currentNotebookId ).remove();
+}
+
+function openNotebook() {
+  var aux = notebookSelect.value;
+  userNotebooks.forEach((notebook) => {
+    if (notebook.id == aux){
+      currentNotebookId = notebook.id;
+    }
+  })
+}
+
+async function getNotebooks() {
+  notebookSelect.innerHTML = null;
+  await firebase.database().ref(userId + '/notebooks').once('value', (snap) => {
+    var aux = snap.val();
+    userNotebooks = [];
+    for (notebook in aux){
+      userNotebooks.push(aux[notebook])
+      var el = document.createElement("option");
+      var opt = aux[notebook].name;
+      el.textContent = opt;
+      el.value = opt;
+      notebookSelect.appendChild(el);
+    }
+    currentNotebookId = userNotebooks[0].id;
+    getNotes();
+  })
+  openNotebook();
+}
+
 function createNewNote() {
-  var delta = quill.getContents();
+  var delta = {ops:[{"attributes":{"size":"huge"},"insert":"NEW NOTE...."},{"insert":"\n"}]};
+  quill.setContents(delta);
   currentNoteId = Date.now();
-  firebase.database().ref( userId + '/notes/' + currentNoteId ).set({
+  firebase.database().ref( userId + '/notebooks/' + currentNotebookId + '/notes/' + currentNoteId).set({
     rawData: delta,
     id: currentNoteId
   });
@@ -115,25 +168,10 @@ function createNewNote() {
   select.appendChild(el);
 }
 
-function createNewNotebook() {
-  var notebookId = Date.now();
-  firebase.database().ref( userId + '/notebooks/' + notebookId ).set({
-    notes: [],
-    id: notebookId,
-    name : "New Notebook"
-  });
-  var el = document.createElement("option");
-  var opt = "New Note";
-  el.textContent = opt;
-  el.value = opt;
-  el.selected = true;
-  noteBookselect.appendChild(el);
-}
-
 function saveNote() {
   var delta = {};
   delta = quill.getContents();
-  firebase.database().ref( userId + '/notes/' + currentNoteId ).set({
+  firebase.database().ref( userId + '/notebooks/' + currentNotebookId + '/notes/' + currentNoteId ).set({
     rawData: delta,
     id: currentNoteId
   });
@@ -166,13 +204,16 @@ function openNote() {
     if (note.id == aux){
       quill.setContents(note.rawData);
       currentNoteId = note.id;
+    } else {
+      quill.setContents(userNotes[0].rawData);
+      currentNoteId = userNotes[0].id;
     }
   })
 }
 
 async function getNotes() {
   select.innerHTML = null;
-  await firebase.database().ref(userId + '/notes').once('value', (snap) => {
+  await firebase.database().ref(userId + '/notebooks/' + currentNotebookId + '/notes').once('value', (snap) => {
     var aux = snap.val();
     userNotes = [];
     for (note in aux){
@@ -183,8 +224,8 @@ async function getNotes() {
       el.value = aux[note].id;
       select.appendChild(el);
     }
+    openNote();
   })
-  quill.setContents(userNotes[0].rawData);
 }
 
 
@@ -278,7 +319,7 @@ firebase.auth().onAuthStateChanged((user) => {
     userId = firebase.auth().currentUser.uid;
     document.getElementById('logDiv').style.display = 'none';
     loadSavedTheme();
-    getNotes();
+    getNotebooks();
     document.getElementById("notesDiv").style.display = 'flex';
   } else {
     document.getElementById('logDiv').style.display = 'flex';
