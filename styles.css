@@ -39,6 +39,10 @@ body {
   z-index: 11;
 }
 
+#navbar {
+  position: fixed;
+}
+
 .navContainer {
   display: none;
   position: absolute;
@@ -53,7 +57,10 @@ body {
 }
 
 .logBtnDiv {
-  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 1rem;
 }
 
 .logBtnDiv > button {
@@ -76,9 +83,8 @@ cursor: pointer;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 80%;
-  height: 60px;
-  margin-top: 150px;
+  width: 90%;
+  margin-top: 5rem;
 }
 
 h3 {
@@ -97,6 +103,7 @@ h3 {
   color: var(--main-text-color);
   font-size: 1rem;
   border-bottom: 1px solid var(--main-toolbar-color);
+  width: 100%;
 }
 
 #signUpDiv {
@@ -112,7 +119,7 @@ h3 {
   flex-direction: column;
   width: 100%;
   align-items: center;
-  margin-top: 250px;
+  margin-top: 200px;
 }
 
 .notes > select {
@@ -231,10 +238,17 @@ div:nth-child(4) > div > span{
   }
 
   .menu {
+    display: block;
+    position: fixed;
     bottom: 0%;
+    z-index: 1000;
   }
 
   .ql-editor {
     margin: 0.5rem 1rem 0rem 1rem !important;
+  }
+
+  .notes {
+    margin-top: 0px;
   }
 }
