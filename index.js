@@ -103,16 +103,17 @@ function loadSavedTheme(){
   })
 }
 
-function createNewNotebook(name) {
+function createNewNotebook() {
+  var person = prompt("Please enter your notebook name", "New Notebook");
   var notebookId = Date.now();
   currentNotebookId = notebookId;
   firebase.database().ref( userId + '/notebooks/' + notebookId ).set({
     notes: [],
     id: notebookId,
-    name : name || "New Notebook"
+    name : person
   });
   var el = document.createElement("option");
-  var opt = "New Note";
+  var opt = person;
   el.textContent = opt;
   el.value = opt;
   el.selected = true;
@@ -122,12 +123,20 @@ function createNewNotebook(name) {
 
 function deleteNotebook() {
   firebase.database().ref( userId + '/notebooks/' + currentNotebookId ).remove();
+  for (var i = 0; i <userNotebooks.length; i++){
+    console.log(userNotebooks)
+    if(userNotebooks[i].id == currentNotebookId ){
+      userNotebooks.splice(i,1);
+      notebookSelect.remove(i);
+    }
+  }
 }
 
 function openNotebook() {
   var aux = notebookSelect.value;
+  console.log(userNotebooks, aux)
   userNotebooks.forEach((notebook) => {
-    if (notebook.id == aux){
+    if (notebook.name == aux){
       currentNotebookId = notebook.id;
     }
   })
