@@ -58,7 +58,6 @@ body {
 
 .logBtnDiv {
   display: flex;
-  flex-direction: column;
   align-items: center;
   margin-top: 1rem;
 }
@@ -84,7 +83,7 @@ cursor: pointer;
   align-items: center;
   justify-content: center;
   width: 90%;
-  margin-top: 5rem;
+  margin-top: 50%;
 }
 
 h3 {
@@ -104,6 +103,7 @@ h3 {
   font-size: 1rem;
   border-bottom: 1px solid var(--main-toolbar-color);
   width: 100%;
+  margin-bottom: 0.5rem;
 }
 
 #signUpDiv {
@@ -262,12 +262,14 @@ div:nth-child(4) > div > span{
 
 
 
+
+
 /* ANIMATIONS */
 
 @-webkit-keyframes slide-right {
   0% {
-    -webkit-transform: translateX(-100px);
-            transform: translateX(-100px);
+    -webkit-transform: translateX(-300px);
+            transform: translateX(-300px);
   }
   100% {
     -webkit-transform: translateX(0px);
@@ -276,8 +278,8 @@ div:nth-child(4) > div > span{
 }
 @keyframes slide-right {
   0% {
-    -webkit-transform: translateX(-100px);
-            transform: translateX(-100px);
+    -webkit-transform: translateX(-300px);
+            transform: translateX(-300px);
   }
   100% {
     -webkit-transform: translateX(0px);
@@ -305,7 +307,6 @@ div:nth-child(4) > div > span{
             transform: translateX(-300px);
   }
 }
-
 
 .slide-right-in {
 	-webkit-animation: slide-right 0.5s ease-out forwards;

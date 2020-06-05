@@ -63,8 +63,8 @@ firebase.analytics();
 function signUp() {
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
-  firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
-    console.log(error);
+  firebase.auth().createUserWithEmailAndPassword(email, password).catch((error) => {
+    alert(error.message)
   }).then(() => {
     userId = firebase.auth().currentUser.uid;
     createNewNotebook("Inbox");
@@ -74,8 +74,8 @@ function signUp() {
 function signIn() {
   var email = document.getElementById('email').value;
   var password = document.getElementById('password').value;
-  firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-    console.log(error);
+  firebase.auth().signInWithEmailAndPassword(email, password).catch((error) => {
+    alert(error.message)
   });
 }
 
@@ -368,11 +368,13 @@ function themeSwitcher() {
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     userId = firebase.auth().currentUser.uid;
+    first = true;
     document.getElementById('logDiv').style.display = 'none';
     loadSavedTheme();
     getNotebooks();
     document.getElementById("notesDiv").style.display = 'flex';
   } else {
+    first = false;
     document.getElementById('logDiv').style.display = 'flex';
     document.getElementById("navbar").style.display = 'flex';
   }
