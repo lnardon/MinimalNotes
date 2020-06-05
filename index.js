@@ -255,6 +255,20 @@ function downloadFile(){
   saveAs(blob, select.options[select.selectedIndex].textContent + ".txt");
 }
 
+function moveNote(){
+  var name = prompt("Please the name of the notebook you want to transfer this note to:", "-");
+  for(var i = 0; i < userNotebooks.length; i++){
+    if (userNotebooks[i].name == name){
+      firebase.database().ref( userId + '/notebooks/' + currentNotebookId + '/notes/' + currentNoteId).remove();
+      firebase.database().ref( userId + '/notebooks/' + userNotebooks[i].id + '/notes/' + currentNoteId).set(userNotebooks[notebookSelect.selectedIndex].notes[currentNoteId]);
+      userNotebooks[i].notes[currentNoteId] = userNotebooks[notebookSelect.selectedIndex].notes[currentNoteId];
+      delete userNotebooks[notebookSelect.selectedIndex].notes[currentNoteId];
+    }
+  }
+  if(Object.keys(userNotebooks[notebookSelect.selectedIndex].notes).length <= 0){
+    deleteNotebook();
+  }
+}
 
 
 
