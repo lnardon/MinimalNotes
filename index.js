@@ -1,8 +1,6 @@
 var userId = '';
 var n = true;
-var as = null;
 var userNotebooks = [];
-var currentNotebookIndex = 0;
 var notesIds;
 var currentNoteId = 0;
 var currentNotebookId = 0;
@@ -106,20 +104,26 @@ function loadSavedTheme(){
 }
 
 function createNewNotebook() {
-  var person = prompt("Please enter your notebook name", "New Notebook");
+  var name = prompt("Please enter your notebook name", "New Notebook");
   var notebookId = Date.now();
   currentNotebookId = notebookId;
   firebase.database().ref( userId + '/notebooks/' + notebookId ).set({
     notes: [],
     id: notebookId,
-    name : person
+    name : name
   });
   var el = document.createElement("option");
-  var opt = person;
+  var opt = name;
   el.textContent = opt;
   el.value = opt;
   el.selected = true;
   notebookSelect.appendChild(el);
+  userNotebooks.push({
+    notes: [],
+    id: notebookId,
+    name : name
+  });
+  select.innerHTML = null;
   createNewNote();
 }
 
@@ -131,6 +135,7 @@ function deleteNotebook() {
       notebookSelect.remove(i);
     }
   }
+  getNotes();
 }
 
 function openNotebook() {
@@ -177,12 +182,16 @@ function createNewNote() {
   el.value = opt;
   el.selected = true;
   select.appendChild(el);
+  userNotebooks[notebookSelect.selectedIndex].notes[currentNoteId] = {
+    rawData: delta,
+    id: currentNoteId
+  };
 }
 
 function saveNote() {
   var delta = {};
   delta = quill.getContents();
-  firebase.database().ref( userId + '/notebooks/' + currentNotebookId + '/notes/' + currentNoteId ).set({
+  firebase.database().ref( userId + '/notebooks/' + currentNotebookId + '/notes/' + currentNoteId ).update({
     rawData: delta,
     id: currentNoteId
   });
@@ -196,15 +205,19 @@ function saveNote() {
 
 function deleteNote() {
   firebase.database().ref( userId + '/notebooks/' + currentNotebookId + '/notes/' + currentNoteId).remove();
-  for (var i = 0; i <notesIds.length; i++){
-    if(notesIds[i] == currentNoteId ){
-      if(i != 0){
-        quill.setContents(userNotebooks[notebookSelect.selectedIndex].notes[notesIds[i-1]].rawData);
-      } else {
-        quill.setContents(userNotebooks[notebookSelect.selectedIndex].notes[notesIds[i+1]].rawData);
+  delete userNotebooks[notebookSelect.selectedIndex].notes[currentNoteId];
+  if(Object.keys(userNotebooks[notebookSelect.selectedIndex].notes).length <= 0){
+    deleteNotebook();
+  } else {
+    for (var i = 0; i <notesIds.length; i++){
+      if(notesIds[i] == currentNoteId ){
+        if(i != 0){
+          quill.setContents(userNotebooks[notebookSelect.selectedIndex].notes[notesIds[i-1]].rawData);
+        } else {
+          quill.setContents(userNotebooks[notebookSelect.selectedIndex].notes[notesIds[i+1]].rawData);
+        }
+        select.remove(i);
       }
-      delete userNotebooks[notebookSelect.selectedIndex].notes[currentNoteId];
-      select.remove(i);
     }
   }
 }
@@ -212,15 +225,14 @@ function deleteNote() {
 function openNote() {
   var aux = select.value;
   for(var i = 0; i < notesIds.length; i++){
-    if (userNotebooks[currentNotebookIndex].notes[aux].id == aux){
-      quill.setContents(userNotebooks[currentNotebookIndex].notes[aux].rawData);
-      currentNoteId = userNotebooks[currentNotebookIndex].notes[aux].id;
+    if (userNotebooks[notebookSelect.selectedIndex].notes[aux].id == aux){
+      quill.setContents(userNotebooks[notebookSelect.selectedIndex].notes[aux].rawData);
+      currentNoteId = userNotebooks[notebookSelect.selectedIndex].notes[aux].id;
     } else {
-      quill.setContents(userNotebooks[currentNotebookIndex].notes[notesIds[0]].rawData);
-      currentNoteId = userNotebooks[currentNotebookIndex].notes[notesIds[0]].id;
+      quill.setContents(userNotebooks[notebookSelect.selectedIndex].notes[notesIds[0]].rawData);
+      currentNoteId = userNotebooks[notebookSelect.selectedIndex].notes[notesIds[0]].id;
     }
   }
-  toggleNavbar();
 }
 
 function getNotes() {
