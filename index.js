@@ -179,14 +179,6 @@ function createNewNote() {
   select.appendChild(el);
 }
 
-
-
-
-
-
-
-
-
 function saveNote() {
   var delta = {};
   delta = quill.getContents();
@@ -194,11 +186,11 @@ function saveNote() {
     rawData: delta,
     id: currentNoteId
   });
-  // for (var i = 0; i < userNotebooks.length; i++){
-  //   if(userNotebooks[i].notes[]id == currentNoteId ){
-  //     userNotes[i].rawData = delta;
-  //   }
-  // }
+  for (var i = 0; i < notesIds.length; i++){
+    if(notesIds[i] == currentNoteId ){
+      userNotebooks[notebookSelect.selectedIndex].notes[notesIds[i]].rawData = delta;
+    }
+  }
   select.options[select.selectedIndex].textContent = delta.ops[0].insert;
 }
 
@@ -216,15 +208,6 @@ function deleteNote() {
     }
   }
 }
-
-
-
-
-
-
-
-
-
 
 function openNote() {
   var aux = select.value;
