@@ -1,7 +1,9 @@
 var userId = '';
 var n = true;
 var as = null;
-var userNotes = [];
+var userNotebooks = [];
+var currentNotebookIndex = 0;
+var notesIds;
 var currentNoteId = 0;
 var currentNotebookId = 0;
 var root = document.documentElement;
@@ -124,7 +126,6 @@ function createNewNotebook() {
 function deleteNotebook() {
   firebase.database().ref( userId + '/notebooks/' + currentNotebookId ).remove();
   for (var i = 0; i <userNotebooks.length; i++){
-    console.log(userNotebooks)
     if(userNotebooks[i].id == currentNotebookId ){
       userNotebooks.splice(i,1);
       notebookSelect.remove(i);
@@ -134,12 +135,13 @@ function deleteNotebook() {
 
 function openNotebook() {
   var aux = notebookSelect.value;
-  console.log(userNotebooks, aux)
-  userNotebooks.forEach((notebook) => {
+  userNotebooks.forEach((notebook, i) => {
     if (notebook.name == aux){
       currentNotebookId = notebook.id;
+      currentNotebookIndex = i
     }
   })
+  getNotes();
 }
 
 async function getNotebooks() {
@@ -177,6 +179,14 @@ function createNewNote() {
   select.appendChild(el);
 }
 
+
+
+
+
+
+
+
+
 function saveNote() {
   var delta = {};
   delta = quill.getContents();
@@ -184,58 +194,63 @@ function saveNote() {
     rawData: delta,
     id: currentNoteId
   });
-  for (var i = 0; i < userNotes.length; i++){
-    if(userNotes[i].id == currentNoteId ){
-      userNotes[i].rawData = delta;
-    }
-  }
+  // for (var i = 0; i < userNotebooks.length; i++){
+  //   if(userNotebooks[i].notes[]id == currentNoteId ){
+  //     userNotes[i].rawData = delta;
+  //   }
+  // }
   select.options[select.selectedIndex].textContent = delta.ops[0].insert;
 }
 
 function deleteNote() {
-  firebase.database().ref( userId + '/notes/' + currentNoteId ).remove();
-  for (var i = 0; i <userNotes.length; i++){
-    if(userNotes[i].id == currentNoteId ){
-      if (i != 0){
-        quill.setContents(userNotes[0].rawData);
+  firebase.database().ref( userId + '/notebooks/' + currentNotebookId + '/notes/' + currentNoteId).remove();
+  for (var i = 0; i <notesIds.length; i++){
+    if(notesIds[i] == currentNoteId ){
+      if(i != 0){
+        quill.setContents(userNotebooks[notebookSelect.selectedIndex].notes[notesIds[i-1]].rawData);
       } else {
-        quill.setContents(userNotes[1].rawData);
+        quill.setContents(userNotebooks[notebookSelect.selectedIndex].notes[notesIds[i+1]].rawData);
       }
-      userNotes.splice(i,1);
+      delete userNotebooks[notebookSelect.selectedIndex].notes[currentNoteId];
       select.remove(i);
     }
   }
 }
 
+
+
+
+
+
+
+
+
+
 function openNote() {
   var aux = select.value;
-  userNotes.forEach((note) => {
-    if (note.id == aux){
-      quill.setContents(note.rawData);
-      currentNoteId = note.id;
+  for(var i = 0; i < notesIds.length; i++){
+    if (userNotebooks[currentNotebookIndex].notes[aux].id == aux){
+      quill.setContents(userNotebooks[currentNotebookIndex].notes[aux].rawData);
+      currentNoteId = userNotebooks[currentNotebookIndex].notes[aux].id;
     } else {
-      quill.setContents(userNotes[0].rawData);
-      currentNoteId = userNotes[0].id;
+      quill.setContents(userNotebooks[currentNotebookIndex].notes[notesIds[0]].rawData);
+      currentNoteId = userNotebooks[currentNotebookIndex].notes[notesIds[0]].id;
     }
-  })
+  }
   toggleNavbar();
 }
 
-async function getNotes() {
+function getNotes() {
+  notesIds = Object.keys(userNotebooks[notebookSelect.selectedIndex].notes);
   select.innerHTML = null;
-  await firebase.database().ref(userId + '/notebooks/' + currentNotebookId + '/notes').once('value', (snap) => {
-    var aux = snap.val();
-    userNotes = [];
-    for (note in aux){
-      userNotes.push(aux[note])
-      var el = document.createElement("option");
-      var opt = aux[note].rawData.ops[0].insert;
-      el.textContent = opt;
-      el.value = aux[note].id;
-      select.appendChild(el);
-    }
-    openNote();
-  })
+  for (let i = 0; i < notesIds.length; i++){
+    var el = document.createElement("option");
+    var opt = userNotebooks[notebookSelect.selectedIndex].notes[notesIds[i]].rawData.ops[0].insert;
+    el.textContent = opt;
+    el.value = userNotebooks[notebookSelect.selectedIndex].notes[notesIds[i]].id;
+    select.appendChild(el);
+  }
+  openNote();
 }
 
 function downloadFile(){
