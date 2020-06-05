@@ -22,11 +22,11 @@ We live in the era of information, and too much information can be as harmful as
   - [x] 3 Extra Themes ( USA, Razzzr & Coffee Buzz )
   - [x] Ability to create notebooks
   - [x] Ability to move notes between notebooks
-  - [ ] Implement CSS transition animations
-  - [ ] Create Mobile experience
+  - [x] Implement CSS transition animations
   - [x] Ability to export a document generated on the app in .txt format
   - [ ] Improve user Login and SignUp Experience
 
 #### Month Release (July) -> Branch 3.0
   - [ ] Desktop program avaiable (Win 10 & Mac OS)
+  - [ ] Create Mobile experience
   - [ ] Inline editor option

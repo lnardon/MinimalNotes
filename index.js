@@ -1,4 +1,5 @@
 var userId = '';
+var first = true;
 var n = true;
 var userNotebooks = [];
 var notesIds;
@@ -30,11 +31,19 @@ var quill = new Quill('#editor', {
 });
 
 function toggleNavbar () {
-  n = !n;
-  if (n) {
-    document.getElementById("navbar").style.display = 'none';
-  } else {
+  if (first) {
     document.getElementById("navbar").style.display = 'flex';
+    document.getElementById("navbar").classList.add('slide-right-in');
+    first = false;
+  } else {
+    n = !n;
+    if (!n) {
+      document.getElementById("navbar").classList.remove('slide-right-in');
+      document.getElementById("navbar").classList.add('slide-right-out');
+    } else {
+      document.getElementById("navbar").classList.remove('slide-right-out');
+      document.getElementById("navbar").classList.add('slide-right-in');
+    }
   }
 }
 

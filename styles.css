@@ -52,7 +52,7 @@ body {
   min-width: 200px;
   height: 100vh;
   background-color: var(--main-color);
-  border-right: 1px solid var(--main-toolbar-color);
+  /* border-right: 1px solid var(--main-toolbar-color); */
   z-index: 10;
 }
 
@@ -134,7 +134,7 @@ h3 {
 
 .handleNotesBtn {
   display: flex;
-  width: 350px;
+  width: 800px;
   justify-content: space-around;
   margin-top: 1rem;
 }
@@ -251,4 +251,68 @@ div:nth-child(4) > div > span{
   .notes {
     margin-top: 0px;
   }
+}
+
+@media (max-width: 800px){
+  body {
+    display: none;
+  }
+}
+
+
+
+
+/* ANIMATIONS */
+
+@-webkit-keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(-100px);
+            transform: translateX(-100px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+@keyframes slide-right {
+  0% {
+    -webkit-transform: translateX(-100px);
+            transform: translateX(-100px);
+  }
+  100% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+}
+
+@-webkit-keyframes slide-right-out {
+  0% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+  100% {
+    -webkit-transform: translateX(-300px);
+            transform: translateX(-300px);
+  }
+}
+@keyframes slide-right-out {
+  0% {
+    -webkit-transform: translateX(0px);
+            transform: translateX(0px);
+  }
+  100% {
+    -webkit-transform: translateX(-300px);
+            transform: translateX(-300px);
+  }
+}
+
+
+.slide-right-in {
+	-webkit-animation: slide-right 0.5s ease-out forwards;
+	        animation: slide-right 0.5s ease-out forwards;
+}
+
+.slide-right-out {
+	-webkit-animation: slide-right-out 0.9s ease-out forwards;
+	        animation: slide-right-out 0.9s ease-out forwards;
 }
