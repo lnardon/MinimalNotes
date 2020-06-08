@@ -79,6 +79,11 @@ function signIn() {
   });
 }
 
+function signOut(){
+  location.reload();
+  firebase.auth().signOut();
+}
+
 function loadSavedTheme(){
   firebase.database().ref(userId + '/currentTheme').once('value', (snap) => {
     var aux = snap.val();
