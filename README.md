@@ -32,3 +32,4 @@ We live in the era of information, and too much information can be as harmful as
   - [ ] Ability to share a read-only note through a link
   - [ ] Refine CSS Transitions
   - [ ] New Action Buttons layout
+  - [ ] Add Website Loader
