@@ -25,9 +25,10 @@ We live in the era of information, and too much information can be as harmful as
   - [x] Implement CSS transition animations
   - [x] Ability to export a document generated on the app in .txt format
   - [x] Improve user Login and SignUp Experience
-  - [ ] Ability to share a read-only note through a link
 
 #### Month Release (July) -> Branch 3.0
   - [ ] Desktop program avaiable (Win 10 & Mac OS)
   - [ ] Create Mobile experience
-  - [ ] Inline editor option
+  - [ ] Ability to share a read-only note through a link
+  - [ ] Refine CSS Transitions
+  - [ ] New Action Buttons layout
