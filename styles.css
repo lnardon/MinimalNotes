@@ -1,17 +1,17 @@
 :root {
   --main-color: #333;
-  --main-text-color: #FFF;
-  --main-toolbar-color: #FFF;
+  --main-text-color: #fff;
+  --main-toolbar-color: #fff;
   --main-toolbar-color-contrast: #333;
   --main-toolbar-icon-color: #333;
-  --main-logo-color: #FFF;
+  --main-logo-color: #fff;
 }
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
@@ -23,6 +23,29 @@ body {
   box-sizing: border-box;
 }
 
+.loginScreenContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background-color: var(--main-color);
+}
+
+#logDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  height: 300px;
+}
+
+.app {
+  display: none;
+}
+
 .menu {
   position: absolute;
   display: flex;
@@ -32,7 +55,7 @@ body {
   cursor: pointer;
 }
 
-.menu > img  {
+.menu > img {
   display: flex;
   width: 100%;
   height: 100%;
@@ -73,17 +96,8 @@ body {
 }
 
 .logBtnDiv > button:hover {
-border-bottom: 1px solid var(--main-text-color);
-cursor: pointer;
-}
-
-#logDiv {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 90%;
-  margin-top: 50%;
+  border-bottom: 1px solid var(--main-text-color);
+  cursor: pointer;
 }
 
 h3 {
@@ -165,7 +179,7 @@ h3 {
   font-size: 1rem;
 }
 
-div:nth-child(4) > div > span{
+div:nth-child(4) > div > span {
   background-color: var(--main-color) !important;
 }
 
@@ -182,7 +196,7 @@ div:nth-child(4) > div > span{
   margin: 1rem 0rem;
 }
 
-.ql-fill{
+.ql-fill {
   fill: var(--main-toolbar-color) !important;
 }
 
@@ -218,7 +232,7 @@ div:nth-child(4) > div > span{
   background-color: var(--main-color);
 }
 
-@media (max-width: 900px){
+@media (max-width: 900px) {
   .ql-toolbar {
     border: none !important;
     transform: scale(1);
@@ -253,67 +267,62 @@ div:nth-child(4) > div > span{
   }
 }
 
-@media (max-width: 800px){
+@media (max-width: 800px) {
   body {
     display: none;
   }
 }
-
-
-
-
-
 
 /* ANIMATIONS */
 
 @-webkit-keyframes slide-right {
   0% {
     -webkit-transform: translateX(-300px);
-            transform: translateX(-300px);
+    transform: translateX(-300px);
   }
   100% {
     -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    transform: translateX(0px);
   }
 }
 @keyframes slide-right {
   0% {
     -webkit-transform: translateX(-300px);
-            transform: translateX(-300px);
+    transform: translateX(-300px);
   }
   100% {
     -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    transform: translateX(0px);
   }
 }
 
 @-webkit-keyframes slide-right-out {
   0% {
     -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    transform: translateX(0px);
   }
   100% {
     -webkit-transform: translateX(-300px);
-            transform: translateX(-300px);
+    transform: translateX(-300px);
   }
 }
 @keyframes slide-right-out {
   0% {
     -webkit-transform: translateX(0px);
-            transform: translateX(0px);
+    transform: translateX(0px);
   }
   100% {
     -webkit-transform: translateX(-300px);
-            transform: translateX(-300px);
+    transform: translateX(-300px);
   }
 }
 
 .slide-right-in {
-	-webkit-animation: slide-right 0.5s ease-out forwards;
-	        animation: slide-right 0.5s ease-out forwards;
+  -webkit-animation: slide-right 0.5s ease-out forwards;
+  animation: slide-right 0.5s ease-out forwards;
 }
 
 .slide-right-out {
-	-webkit-animation: slide-right-out 0.9s ease-out forwards;
-	        animation: slide-right-out 0.9s ease-out forwards;
+  -webkit-animation: slide-right-out 0.9s ease-out forwards;
+  animation: slide-right-out 0.9s ease-out forwards;
 }

@@ -11,7 +11,8 @@
   <title>Minimal Notes</title>
 </head>
 <body>
-  <div class="loginScreenContainer">
+  <div class="loginScreenContainer" id="loginScreenContainer">
+    <h2>MINIMAL NOTES</h2>
     <div id="logDiv">
       <input type="email" id="email" placeholder="Email">
       <input type="password" id="password" placeholder="Password">
@@ -21,53 +22,46 @@
       </div>
     </div>
   </div>
-  <div class="menu" onclick="toggleNavbar()">
-    <img id="logo" src="./minimalnoteslogo.svg" alt="Menu"></img>
-  </div>
-  <nav id="navbar" class="navContainer">
-    <div id="logDiv">
-      <input type="email" id="email" placeholder="Email">
-      <input type="password" id="password" placeholder="Password">
-      <div class="logBtnDiv">
-        <button onclick="signIn()">Sign In</button>
-        <button onclick="signUp()">Sign Up</button>
+  <div class="app" id="app">
+    <div class="menu" onclick="toggleNavbar()">
+      <img id="logo" src="./minimalnoteslogo.svg" alt="Menu"></img>
+    </div>
+    <nav id="navbar" class="navContainer">
+      <div id="notesDiv" class="notes">
+        <h3>Theme Switcher</h3>
+        <select id="themeSwitcher" name="Notepad" onchange="themeSwitcher()"> 
+          <option value="Original" selected> Original </option>
+          <option value="Simple White"> Simple White </option>
+          <option value="Dracula"> Dracula </option>
+          <option value="USA"> USA </option>
+          <option value="Razzzr"> Razzzr </option>
+          <option value="Coffee Buzz"> Coffee Buzz </option>
+        </select>
+        <h3>Notebook Selector</h3>
+        <select id="notebooksSwitcher" name="Notepad" onchange="openNotebook()"> 
+          <option value="null"> - Inbox - </option>
+        </select>
+        <h3>Note Selector</h3>
+        <select id="notesSwitcher" name="Notepad" onchange="openNote()"> 
+        </select>
+        <br>
+        <button id="btn" onclick="signOut()">Sign Out</button>
       </div>
-    </div>
-
-    <div id="notesDiv" class="notes">
-      <h3>Theme Switcher</h3>
-      <select id="themeSwitcher" name="Notepad" onchange="themeSwitcher()"> 
-        <option value="Original" selected> Original </option>
-        <option value="Simple White"> Simple White </option>
-        <option value="Dracula"> Dracula </option>
-        <option value="USA"> USA </option>
-        <option value="Razzzr"> Razzzr </option>
-        <option value="Coffee Buzz"> Coffee Buzz </option>
-      </select>
-      <h3>Notebook Selector</h3>
-      <select id="notebooksSwitcher" name="Notepad" onchange="openNotebook()"> 
-        <option value="null"> - Inbox - </option>
-      </select>
-      <h3>Note Selector</h3>
-      <select id="notesSwitcher" name="Notepad" onchange="openNote()"> 
-      </select>
-      <br>
-      <button id="btn" onclick="signOut()">Sign Out</button>
-    </div>
-  </nav>
-  <div id="editorContainer" class="editorContainer">
-    <div class="handleNotesBtn">
-      <button onclick="createNewNote()">Create Note</button>
-      <button onclick="saveNote()">Save Note</button>
-      <button onclick="moveNote()">Move Note</button>
-      <button onclick="deleteNote()">Delete Note</button>
-      <button onclick="downloadFile()">Download Note</button>
-      <button onclick="createNewNotebook()">Create Notebook</button>
-      <button onclick="deleteNotebook()">Delete Notebook</button>
-    </div>
-    <div id="editor">
-      <p class="ql-align-center"><br></p><h1 class="ql-align-center"><span class="ql-size-huge">WELCOME TO MINIMAL NOTES</span></h1>
-      <p class="ql-align-center"><br></p><h2 class="ql-align-center"><u class="ql-size-large">Simple, Easy and Clean</u></h2>
+    </nav>
+    <div id="editorContainer" class="editorContainer">
+      <div class="handleNotesBtn">
+        <button onclick="createNewNote()">Create Note</button>
+        <button onclick="saveNote()">Save Note</button>
+        <button onclick="moveNote()">Move Note</button>
+        <button onclick="deleteNote()">Delete Note</button>
+        <button onclick="downloadFile()">Download Note</button>
+        <button onclick="createNewNotebook()">Create Notebook</button>
+        <button onclick="deleteNotebook()">Delete Notebook</button>
+      </div>
+      <div id="editor">
+        <p class="ql-align-center"><br></p><h1 class="ql-align-center"><span class="ql-size-huge">WELCOME TO MINIMAL NOTES</span></h1>
+        <p class="ql-align-center"><br></p><h2 class="ql-align-center"><u class="ql-size-large">Simple, Easy and Clean</u></h2>
+      </div>
     </div>
   </div>
 
