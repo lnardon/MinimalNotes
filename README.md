@@ -32,4 +32,4 @@ We live in the era of information, and too much information can be as harmful as
 - [ ] Create Mobile experience
 - [ ] Refine CSS Transitions
 - [ ] New Action Buttons layout
-- [ ] Add New Login Experience
+- [x] Add New Login Experience
