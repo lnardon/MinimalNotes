@@ -85,7 +85,6 @@ body {
   min-width: 200px;
   height: 100vh;
   background-color: var(--main-color);
-  /* border-right: 1px solid var(--main-toolbar-color); */
   z-index: 10;
 }
 
@@ -107,7 +106,6 @@ body {
 }
 
 .logBtnDiv > button:hover {
-  border-bottom: 1px solid var(--main-text-color);
   cursor: pointer;
 }
 
@@ -177,6 +175,17 @@ h3 {
 
 .handleNotesBtn > button:hover {
   border-bottom: 1px solid var(--main-text-color);
+}
+
+#signOutBtn {
+  padding: 0.25rem 1rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  background-color: var(--main-color);
+  color: var(--main-toolbar-color);
 }
 
 #editor {

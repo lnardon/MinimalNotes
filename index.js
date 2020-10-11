@@ -58,7 +58,6 @@ var firebaseConfig = {
   measurementId: "G-FDX2CVTVPR",
 };
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
 
 function signUp() {
   var email = document.getElementById("email").value;
