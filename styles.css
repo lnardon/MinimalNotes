@@ -157,9 +157,10 @@ h3 {
 
 .handleNotesBtn {
   display: flex;
-  width: 800px;
-  justify-content: space-around;
+  flex-direction: column;
   margin-top: 1rem;
+  width: 90%;
+  margin-bottom: 2rem;
 }
 
 .handleNotesBtn > button {
@@ -167,14 +168,17 @@ h3 {
   color: var(--main-text-color);
   border: none;
   outline: none;
-  border-bottom: 1px solid var(--main-text-color);
+  /* border-bottom: 1px solid var(--main-text-color); */
   cursor: pointer;
   font-size: 1rem;
   font-weight: 500;
+  margin-bottom: 0.5rem;
+  text-align: start;
 }
 
 .handleNotesBtn > button:hover {
-  border-bottom: 1px solid var(--main-text-color);
+  color: var(--main-toolbar-color);
+  /* border-bottom: 1px solid var(--main-toolbar-color); */
 }
 
 #signOutBtn {

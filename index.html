@@ -46,19 +46,19 @@
         <select id="notesSwitcher" name="Notepad" onchange="openNote()"> 
         </select>
         <br>
+        <div class="handleNotesBtn">
+          <button onclick="createNewNote()">Create Note</button>
+          <button onclick="saveNote()">Save Note</button>
+          <button onclick="moveNote()">Move Note</button>
+          <button onclick="deleteNote()">Delete Note</button>
+          <button onclick="downloadFile()">Download Note</button>
+          <button onclick="createNewNotebook()">Create Notebook</button>
+          <button onclick="deleteNotebook()">Delete Notebook</button>
+        </div>
         <button id="signOutBtn" onclick="signOut()">Sign Out</button>
       </div>
     </nav>
     <div id="editorContainer" class="editorContainer">
-      <div class="handleNotesBtn">
-        <button onclick="createNewNote()">Create Note</button>
-        <button onclick="saveNote()">Save Note</button>
-        <button onclick="moveNote()">Move Note</button>
-        <button onclick="deleteNote()">Delete Note</button>
-        <button onclick="downloadFile()">Download Note</button>
-        <button onclick="createNewNotebook()">Create Notebook</button>
-        <button onclick="deleteNotebook()">Delete Notebook</button>
-      </div>
       <div id="editor">
         <p class="ql-align-center"><br></p><h1 class="ql-align-center"><span class="ql-size-huge">WELCOME TO MINIMAL NOTES</span></h1>
         <p class="ql-align-center"><br></p><h2 class="ql-align-center"><u class="ql-size-large">Simple, Easy and Clean</u></h2>
